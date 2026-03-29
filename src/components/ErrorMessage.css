@@ -1,0 +1,18 @@
+/* --- ErrorMessage --- */
+/* Alerta de error con acento rojo */
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 20px;
+  border-radius: var(--radius-button);
+  background: rgba(227, 6, 19, 0.08);
+  border: 1px solid rgba(227, 6, 19, 0.2);
+}
+
+.error-message__text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-primary);
+}

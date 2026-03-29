@@ -1,0 +1,149 @@
+/* --- StationCard --- */
+/* Card individual de estación dentro de un grid responsive */
+
+.station-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  transition: var(--transition);
+  overflow: hidden;
+  height: 100%;
+}
+
+.station-card:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 16px var(--color-glow), 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Icono toggle en esquina superior derecha */
+.station-card__toggle-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  background: transparent;
+}
+
+.station-card__toggle-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Activa → X roja para desactivar */
+.station-card__toggle-icon--close {
+  color: #ef4444;
+}
+
+.station-card__toggle-icon--close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  transform: scale(1.15);
+}
+
+/* Inactiva → Check verde para activar */
+.station-card__toggle-icon--check {
+  color: #22c55e;
+}
+
+.station-card__toggle-icon--check:hover {
+  background: rgba(34, 197, 94, 0.15);
+  transform: scale(1.15);
+}
+
+.station-card__toggle-icon:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Zona clickeable principal (ver servicios en modal) */
+.station-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  padding-right: 40px;
+  background: none;
+  border: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.station-card__body:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.station-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.station-card__name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.station-card__id {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  font-family: monospace;
+}
+
+/* Fila de metadata: estado + tiempo */
+.station-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Badge de estado con dot indicador */
+.station-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.station-card__status--published {
+  color: var(--color-active);
+}
+
+.station-card__status--draft {
+  color: var(--color-inactive);
+}
+
+.station-card__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.station-card__time {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+}

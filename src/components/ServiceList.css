@@ -1,0 +1,22 @@
+/* --- ServiceList --- */
+/* Grid de iconos de servicios (dentro del modal) */
+
+.service-list {
+  padding: 4px 0;
+}
+
+.service-list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-list__empty-msg {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 12px 0;
+}

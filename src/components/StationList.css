@@ -1,0 +1,26 @@
+/* --- StationList --- */
+/* Grid responsive de estaciones */
+
+.station-list {
+  padding: 24px;
+}
+
+.station-list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .station-list {
+    padding: 16px;
+  }
+
+  .station-list__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

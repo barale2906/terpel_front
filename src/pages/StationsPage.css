@@ -1,0 +1,65 @@
+/* --- StationsPage --- */
+/* Layout principal con grid de estaciones */
+
+.stations-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Centrado para estados de loading y error */
+.stations-page--centered {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header con franja superior rojo Terpel */
+.stations-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.stations-page__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.stations-page__saving {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Contenido principal: el grid de estaciones */
+.stations-page__content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Animación para indicador de guardado */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Contenido de secciones adicionales dentro del modal */
+.section-text {
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.section-text__placeholder {
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-style: italic;
+  padding: 24px 0;
+}

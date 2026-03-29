@@ -1,0 +1,30 @@
+/* --- ServiceIcon --- */
+/* Icono SVG de servicio, sin texto visible (requisito de la prueba) */
+/* El nombre del servicio solo vive en el aria-label */
+
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  padding: 14px;
+  border-radius: var(--radius-button);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: var(--transition);
+  cursor: default;
+}
+
+.service-icon:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 209, 0, 0.1);
+}
+
+.service-icon__svg {
+  width: 100%;
+  height: 100%;
+  color: var(--color-secondary);
+}

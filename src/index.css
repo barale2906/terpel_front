@@ -1,0 +1,88 @@
+/* =============================================
+   TEMA VISUAL — Terpel Futurista
+   =============================================
+   Paleta basada en la identidad visual de terpel.com
+   con aire futurista dark que transmite tecnología.
+   ============================================= */
+
+/* --- Paleta de colores (variables CSS) --- */
+:root {
+  /* Primarios Terpel */
+  --color-primary: #E30613;
+  --color-primary-dark: #B80510;
+  --color-secondary: #FFD100;
+
+  /* Fondos dark futurista (capas de profundidad) */
+  --color-bg: #0A0A0F;
+  --color-surface: #14141F;
+  --color-surface-hover: #1E1E2E;
+
+  /* Texto */
+  --color-text: #F5F5F5;
+  --color-text-secondary: #A0A0B0;
+
+  /* Estados */
+  --color-active: #00E676;
+  --color-inactive: #666680;
+
+  /* Bordes y efectos */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-glow: rgba(227, 6, 19, 0.15);
+
+  /* Radios y transiciones */
+  --radius-card: 12px;
+  --radius-button: 8px;
+  --transition: all 0.2s ease;
+}
+
+/* --- Reset base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Tipografía y fondo global --- */
+html {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* --- Scrollbar personalizada (tema futurista) --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Focus visible global (accesibilidad) --- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
