@@ -8,6 +8,7 @@
  * @param onBack - Callback para regresar a la vista principal
  */
 import './SectionPage.css'
+import './BackendPage.css'
 
 interface ProblemsPageProps {
   onBack: () => void
@@ -23,6 +24,7 @@ export function ProblemsPage({ onBack }: ProblemsPageProps) {
           </svg>
         </button>
         <h1 className="section-page__title">Sección 2: Problemas y Trabajo en equipo</h1>
+        <span className="section-page__context-badge">Frontend</span>
       </header>
 
       <main className="section-page__content">
