@@ -5,20 +5,24 @@
  * su corrección básica, la solución implementada con React Query
  * y mejoras adicionales como cleanup con AbortController.
  *
- * @param onBack - Callback para regresar a la vista principal
  */
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../routes/paths.ts'
 import './SectionPage.css'
 import './BackendPage.css'
 
-interface BugsPageProps {
-  onBack: () => void
-}
+export function BugsPage() {
+  const navigate = useNavigate()
 
-export function BugsPage({ onBack }: BugsPageProps) {
   return (
     <div className="section-page">
       <header className="section-page__header">
-        <button className="section-page__back" onClick={onBack} type="button" aria-label="Volver al panel principal">
+        <button
+          className="section-page__back"
+          onClick={() => navigate(ROUTES.home)}
+          type="button"
+          aria-label="Volver al panel principal"
+        >
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

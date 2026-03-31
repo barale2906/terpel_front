@@ -9,10 +9,11 @@
  * Estas funciones son consumidas por los hooks de React Query
  * en la capa hooks/.
  */
-import { stations, services, rel_stations_services } from './data/mockData.ts'
-import { mapStations } from './mappers/stationMapper.ts'
-import { mapServices } from './mappers/serviceMapper.ts'
-import { mapStationServices } from './mappers/stationServiceMapper.ts'
+import {
+  getNormalizedStationServices,
+  getNormalizedServices,
+  getNormalizedStations,
+} from './stationDataSource.ts'
 import type { ContentItem, Service } from '../types/index.ts'
 
 /** Latencia simulada en milisegundos para imitar llamadas de red */
@@ -50,7 +51,7 @@ function simulateDelay<T>(data: T): Promise<T> {
  * // [{ id: 1, name: "Estación Prueba 1", stationId: "001", status: "published", updatedAt: "..." }]
  */
 export async function getStations(): Promise<ContentItem[]> {
-  const normalized = mapStations(stations)
+  const normalized = getNormalizedStations()
 
   const items: ContentItem[] = normalized.map((station) => ({
     id: station.id,
@@ -78,8 +79,8 @@ export async function getStations(): Promise<ContentItem[]> {
  * // [{ id: 1, serviceId: "s1", name: "Baño" }, { id: 2, serviceId: "s2", name: "Cajeros" }]
  */
 export async function getServicesByStationId(stationId: string): Promise<Service[]> {
-  const normalizedRelations = mapStationServices(rel_stations_services)
-  const normalizedServices = mapServices(services)
+  const normalizedRelations = getNormalizedStationServices()
+  const normalizedServices = getNormalizedServices()
 
   const serviceIds = normalizedRelations
     .filter((rel) => rel.stationId === stationId)
@@ -109,7 +110,7 @@ export async function toggleStationStatus(stationId: string): Promise<ContentIte
   const newStatus = currentStatus === 'published' ? 'draft' : 'published'
   stationStatuses[stationId] = newStatus
 
-  const normalized = mapStations(stations)
+  const normalized = getNormalizedStations()
   const station = normalized.find((s) => s.stationId === stationId)
 
   if (!station) {

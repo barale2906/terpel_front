@@ -1,15 +1,20 @@
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../routes/paths.ts'
 import './SectionPage.css'
 import './BackendPage.css'
 
-interface BackendProblemsPageProps {
-  onBack: () => void
-}
+export function BackendProblemsPage() {
+  const navigate = useNavigate()
 
-export function BackendProblemsPage({ onBack }: BackendProblemsPageProps) {
   return (
     <div className="section-page">
       <header className="section-page__header section-page__header--backend">
-        <button className="section-page__back" onClick={onBack} type="button" aria-label="Volver al panel principal backend">
+        <button
+          className="section-page__back"
+          onClick={() => navigate(ROUTES.backendHome)}
+          type="button"
+          aria-label="Volver al panel principal backend"
+        >
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

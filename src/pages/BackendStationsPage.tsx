@@ -1,18 +1,18 @@
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../routes/paths.ts'
 import './StationsPage.css'
 import './BackendPage.css'
 
-interface BackendStationsPageProps {
-  onGoFrontend: () => void
-}
+export function BackendStationsPage() {
+  const navigate = useNavigate()
 
-export function BackendStationsPage({ onGoFrontend }: BackendStationsPageProps) {
   return (
     <div className="stations-page">
       <header className="stations-page__header stations-page__header--backend">
         <div className="stations-page__header-left">
           <button
             className="backend-page__back-btn"
-            onClick={onGoFrontend}
+            onClick={() => navigate(ROUTES.home)}
             type="button"
             aria-label="Volver a la prueba frontend"
           >

@@ -5,20 +5,24 @@
  * colaborativo: minimizar impacto de cambios, coordinación con
  * backend/CMS y estrategias para evitar rupturas en producción.
  *
- * @param onBack - Callback para regresar a la vista principal
  */
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../routes/paths.ts'
 import './SectionPage.css'
 import './BackendPage.css'
 
-interface ProblemsPageProps {
-  onBack: () => void
-}
+export function ProblemsPage() {
+  const navigate = useNavigate()
 
-export function ProblemsPage({ onBack }: ProblemsPageProps) {
   return (
     <div className="section-page">
       <header className="section-page__header">
-        <button className="section-page__back" onClick={onBack} type="button" aria-label="Volver al panel principal">
+        <button
+          className="section-page__back"
+          onClick={() => navigate(ROUTES.home)}
+          type="button"
+          aria-label="Volver al panel principal"
+        >
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

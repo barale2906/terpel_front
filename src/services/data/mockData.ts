@@ -12,8 +12,8 @@
  * - `services`: todos los `id` son 1 (deberían ser únicos),
  *   y mezcla `idServicio` con `idServicios`
  *
- * Los mappers en `services/mappers/` se encargan de normalizar
- * estos datos antes de que lleguen a los componentes.
+ * Los mappers en `services/mappers/` normalizan estos datos; `stationDataSource.ts`
+ * es la única puerta hacia el dominio (consumida por `stationService.ts`).
  */
 
 /**

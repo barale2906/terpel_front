@@ -1,15 +1,20 @@
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../routes/paths.ts'
 import './SectionPage.css'
 import './BackendPage.css'
 
-interface DeliverablesPageProps {
-  onBack: () => void
-}
+export function DeliverablesPage() {
+  const navigate = useNavigate()
 
-export function DeliverablesPage({ onBack }: DeliverablesPageProps) {
   return (
     <div className="section-page">
       <header className="section-page__header">
-        <button className="section-page__back" onClick={onBack} type="button" aria-label="Volver al panel principal">
+        <button
+          className="section-page__back"
+          onClick={() => navigate(ROUTES.home)}
+          type="button"
+          aria-label="Volver al panel principal"
+        >
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -24,15 +29,18 @@ export function DeliverablesPage({ onBack }: DeliverablesPageProps) {
           <h2>Arquitectura del proyecto</h2>
           <div className="section-page__code-example">
             <pre><code>{`src/
+├── routes/         ← paths (URLs absolutas y patrones de <Route>)
+├── layouts/        ← AppLayout (shell, menú flotante, outlet)
 ├── types/          ← Interfaces TypeScript (Station, Service, ContentItem)
 ├── services/
 │   ├── data/       ← Datos mock con errores originales preservados
 │   ├── mappers/    ← Normalizan inconsistencias de la API
+│   ├── stationDataSource.ts  ← Mock crudo → dominio (única frontera)
 │   └── stationService.ts  ← Simula API async con delay
 ├── hooks/          ← useStations, useStationServices, useToggleStationStatus
 ├── components/     ← StationCard, ServiceIcon, Modal, FloatingMenu...
 ├── pages/          ← StationsPage, ProblemsPage, BugsPage, DeliverablesPage
-└── __tests__/      ← 3 suites: mappers, hook, componente (TDD)`}</code></pre>
+└── __tests__/      ← mappers, stationDataSource, hook, componente (TDD)`}</code></pre>
           </div>
           <p>
             Cada capa solo depende de la capa inferior, lo que permite cambios aislados
@@ -54,6 +62,7 @@ export function DeliverablesPage({ onBack }: DeliverablesPageProps) {
               <tr><td>TanStack React Query</td><td>5.95.2</td><td>Fetching, cache, stale data, mutations</td></tr>
               <tr><td>Vitest</td><td>4.1.2</td><td>Testing con soporte nativo de TypeScript y JSX</td></tr>
               <tr><td>Testing Library</td><td>16.3.2</td><td>Tests centrados en el usuario, no en implementación</td></tr>
+              <tr><td>React Router</td><td>7.x</td><td>Rutas declarativas y layouts</td></tr>
               <tr><td>ESLint</td><td>9.39.4</td><td>Linting y calidad de código</td></tr>
               <tr><td>Docker</td><td>20.x+</td><td>Entorno consistente y reproducible</td></tr>
             </tbody>
@@ -89,13 +98,14 @@ export function DeliverablesPage({ onBack }: DeliverablesPageProps) {
             </thead>
             <tbody>
               <tr><td><code>mappers.test.ts</code></td><td>10</td><td>Normalización de datos (stations, services, relaciones)</td></tr>
+              <tr><td><code>stationDataSource.test.ts</code></td><td>3</td><td>Fachada mock → dominio (contrato único)</td></tr>
               <tr><td><code>StationCard.test.tsx</code></td><td>8</td><td>Render + interacción + accesibilidad</td></tr>
               <tr><td><code>useStations.test.tsx</code></td><td>3</td><td>Hook + mock API (data, loading, error)</td></tr>
               <tr><td><code>setup.test.ts</code></td><td>2</td><td>Configuración del entorno de test</td></tr>
             </tbody>
           </table>
           <p style={{ marginTop: '8px' }}>
-            Total: <strong>23 tests</strong> — todos pasando.
+            Total: <strong>26 tests</strong> — todos pasando.
           </p>
 
           <h3 className="section-page__subheading">Pirámide de Tests</h3>
